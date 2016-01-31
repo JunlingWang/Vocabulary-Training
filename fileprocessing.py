@@ -9,7 +9,7 @@ def open_web_page(word_str):
 
 
 def search_for_voice(file_name):
-    with open('/home/junlingwang/Desktop/Vocabulary trainning/'+file_name+'.txt', 'r') as word_file:
+    with open('/home/junlingwang/Desktop/Vocabulary training/'+file_name+'.txt', 'r') as word_file:
         lines = word_file.readlines()  # lines is a list of strings
     i = 0
     for line in lines:
@@ -26,7 +26,7 @@ def search_for_voice(file_name):
 
 
 def file_formatting(file_name):
-    with open('/home/junlingwang/Desktop/Vocabulary trainning/'+file_name+'.txt', 'r') as word_file:
+    with open('/home/junlingwang/Desktop/Vocabulary training/'+file_name+'.txt', 'r') as word_file:
         lines = word_file.readlines()  # lines is a list of strings
     index = 0
     while index < len(lines):
@@ -53,12 +53,12 @@ def file_formatting(file_name):
             i += 1
         lines[index] = formatted_string + '     \n'  # if there is no '\n', the lines will become a single one
         index += 1
-    with open('/home/junlingwang/Desktop/Vocabulary trainning/'+file_name+'.txt', 'w') as word_file:
+    with open('/home/junlingwang/Desktop/Vocabulary training/'+file_name+'.txt', 'w') as word_file:
         word_file.writelines(lines)
 
 
 def search_for_meaning(file_name):
-    with open('/home/junlingwang/Desktop/Vocabulary trainning/'+file_name+'.txt', 'r') as word_file:
+    with open('/home/junlingwang/Desktop/Vocabulary training/'+file_name+'.txt', 'r') as word_file:
         lines = word_file.readlines()  # lines is a list of strings
     i = 0
     for line in lines:
