@@ -10,7 +10,12 @@ from datetime import datetime
 # print(str(datetime.now()))
 # print(datetime.now() - datetime(2015, 1, 3))
 
-# str_list1 = ['123', 'f', '156t']
+str_list1 = ['123', 'f', '156t']
+a = 'g'
+for item in str_list1:
+    if a == item:
+        print('yes')
+print('done')
 # print (str_list1[-1][0: -1])
 # a = 3.88
 # l = []
@@ -56,8 +61,8 @@ from datetime import datetime
 # b = 1
 # a = b
 # b += 1
-
-a = '1ef'*0 + '0'
-b = a*3
-
-print(b)
+#
+# a = '1ef'*0 + '0'
+# b = a*3
+#
+# print(b)
