@@ -277,4 +277,5 @@ def test_read_file():
 
 
 if __name__ == '__main__':
-    main('oxford3000+')
+    # main('oxford3000+')
+    main('newwords')

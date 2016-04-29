@@ -31,17 +31,21 @@ def file_formatting(file_name):
     index = 0
     while index < len(lines):
         stripped_str = lines[index].strip()
-        if ',' in stripped_str:
+        if ',/' in stripped_str and '/,' in stripped_str:
             index += 1
             continue
-        str_list = stripped_str.split(' ')
+        if ',' in stripped_str:
+            str_list = stripped_str.split(',')
+        else:
+            str_list = stripped_str.split()
+        print(str_list)
         formatted_string = str_list[0]
         i = 1
         j = 1
-        while i < len(str_list):
+        while i < len(str_list) and i < 3:
             if str_list[i] != '':
                 if j == 1:
-                    if str_list[i][0] != '/':
+                    if str_list[i][0] != '/' and str_list[i][0] != '0':
                         formatted_string += ',/' + str_list[i]
                     else:
                         formatted_string += ',' + str_list[i]
@@ -76,6 +80,7 @@ def search_for_meaning(file_name):
 
 if __name__ == '__main__':
     # search_for_voice('formatted')
-    search_for_voice('newwords')
+    # search_for_voice('newwords')
     # file_formatting('formatted')
+    file_formatting('newwords')
     # search_for_meaning('formatted')
