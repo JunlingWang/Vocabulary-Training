@@ -79,8 +79,5 @@ def search_for_meaning(file_name):
 
 
 if __name__ == '__main__':
-    # search_for_voice('formatted')
     # search_for_voice('newwords')
-    # file_formatting('formatted')
     file_formatting('newwords')
-    # search_for_meaning('formatted')

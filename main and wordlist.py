@@ -1,9 +1,15 @@
 __author__ = 'junlingwang'
 import worditem
+# import webbrowser
 from worditem import get_word_item
+# from fileprocessing import open_web_page
 from worditem import WordItem
 import random
 from datetime import datetime
+
+
+# def open_web_page(word_str):
+#     webbrowser.open_new_tab("http://www.oxfordlearnersdictionaries.com/definition/english/" + word_str + "_1")
 
 
 def read_file(file_name):  # returns a list sorted by score
@@ -231,6 +237,9 @@ def main(file_name):
                     print(word_to_practice.meaning)
                     do_continue = input('Meaning has been saved. Any Key continue, X quit R repeat M meaning I mark as important\n')
                     # add the meaning of the item
+                # if do_continue == 'c'or do_continue == 'C':
+                #     open_web_page(word_to_practice.word)
+                #     do_continue = input('Any Key continue, X quit R repeat M meaning I mark as important\n')
                 if do_continue == 'i' or do_continue == 'I':
                     if word_to_practice.weight == 0:
                         word_to_practice.weight = 1
