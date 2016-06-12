@@ -2,7 +2,9 @@ discuss
 square
 bottom
 bubble
+double
 immediate
+requirements
 media
 ninety
 laboratory
@@ -147,3 +149,8 @@ grocery
 dozen
 studio
 receipt
+relevant
+amount 
+schedule   
+manage     
+manager    

@@ -134,6 +134,7 @@ def main(file_name):
     sorted_word_list = read_file(file_name)  # read_file has the function of sorting items by scores
     list_not_exercised, list_all_correct, list_fault = divide_list(sorted_word_list)
     # divide_list() is a function defined previously
+    print((len(sorted_word_list) - len(list_not_exercised)),'words has been practiced previously.')  # show how many words have been practised
     not_exercised_count = 0
     all_correct_count = 0
     fault_count = 0
@@ -251,7 +252,10 @@ def main(file_name):
                 break
 
     write_file(sorted_word_list, file_name)
-
+    sorted_word_list = read_file(file_name)  # read_file has the function of sorting items by scores
+    list_not_exercised, list_all_correct, list_fault = divide_list(sorted_word_list)
+    # divide_list() is a function defined previously
+    print((len(sorted_word_list) - len(list_not_exercised)),'words totally.')  # show how many words have been practised
 
 #######################
 # test below
@@ -283,6 +287,7 @@ def test_read_file():
     # print('\n')
 
     write_file(word_list, 'oxford3000')
+
 
 
 if __name__ == '__main__':
