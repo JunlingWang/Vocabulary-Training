@@ -178,8 +178,7 @@ computing     kəmˈpjuːtɪŋ
 conclusive     kənˈkluːsɪv
 conclusively     kənˈkluːsɪvli
 consequent     ˈkɑːnsəkwənt
-consequently     ˈkɑːnsəkwentli
-construction     
+consequently     ˈkɑːnsəkwentli  
 constructive     kənˈstrʌktɪv
 constructively     kənˈstrʌktɪvli
 consume     kənˈsuːm
@@ -204,30 +203,21 @@ finality     faɪˈnæləti
 finalization     ˌfaɪnələˈzeɪʃn
 finalize     ˈfaɪnəlaɪz
 inappropriacy     ˌɪnəˈproʊpriəsi
-inappropriate     
-inappropriacy     
-inappropriacy     
-inconclusive     
-inconclusively     
-indistinct     
-indistinctly     
-injure     
-injured     
-injury     
-insecure     
-insecurely     
-insecurely     
-institution     
-institutional     
-institutionalization     
-institutionalize     
-institutionalized     
-institutionally     
-invest     
-investment     
-investor     
-irrelevance     
-irrelevancy     
+inappropriate     ˌɪnəˈproʊpriət
+inappropriacy     ˌɪnəˈproʊpriəsi
+inconclusive     ˌɪnkənˈkluːsɪv
+inconclusively     ˌɪnkənˈkluːsɪvli
+indistinct     ˌɪndɪˈstɪŋkt
+indistinctly     ˌɪndɪˈstɪŋkt
+insecure     ˌɪnsɪˈkjʊr
+insecurely     ˌɪnsɪˈkjʊrli
+institutional     ˌɪnstɪˈtuːʃənl
+institutionalization     ˌɪnstɪˌtuːʃənələˈzeɪʃn
+institutionalize     ˌɪnstɪˈtuːʃənəlaɪz
+institutionalized     ˌɪnstɪˈtuːʃənəlaɪzd
+institutionally     ˌɪnstɪˈtuːʃənəli
+investor     ɪnˈvestər
+irrelevance     ɪˈreləvəns  
 irrelevant     
 irrelevantly     
 item     

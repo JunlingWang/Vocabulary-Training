@@ -79,42 +79,52 @@ anonymous,/əˈnɑːnɪməs/,,0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;00
 rattle,/ˈrætl/,,0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n,-2,0
 dismissive,/dɪsˈmɪsɪv/,,0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n,-2,0
 critic,/ˈkrɪtɪk/,,0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n,-2,0
-oversee     
-breach     
-rectangular     
-rectangle  
+oversee,/ˌoʊvərˈsiː/     
+breach,/briːtʃ/     
+rectangular,/rekˈtæŋɡjələr/     
+rectangle,/ˈrektæŋɡl/     
 pending,/ˈpendɪŋ/,(preposition)等待……发生的时候
-impound   ɪmˈpaʊnd
-parachute   ˈpærəʃuːt
-premature    ˌpriːməˈtʃʊr
-rubric    ˈruːbrɪk
-metaphor    ˈmetəfər
-legacy     ˈleɡəsi
-sigh    saɪ
-invoice   ˈɪnvɔɪs
-tweak    twiːk
-circa    
-prestigious    
-credential    
-scatter  
-roam   
-schema     
-resemble    
-petition     
-fabricate     
-supplementary      
-disenchantment     
-subside    
-refrain     
-solidarity    
-pledges       
-exotic     
-
-
-
-
-
-
-
-
-   
+impound,/ɪmˈpaʊnd/     
+parachute,/ˈpærəʃuːt/     
+premature,/ˌpriːməˈtʃʊr/     
+rubric,/ˈruːbrɪk/     
+metaphor,/ˈmetəfər/     
+legacy,/ˈleɡəsi/     
+sigh,/saɪ/     
+invoice,/ˈɪnvɔɪs/     
+tweak,/twiːk/     
+circa,/ˈsɜːrkə/     
+prestigious,/preˈstɪdʒəs/     
+credential,/krəˈdenʃl/     
+scatter,/ˈskætər/     
+roam,/roʊm/     
+schema,/ˈskiːmə/     
+resemble,/rɪˈzembl/     
+petition,/pəˈtɪʃn/     
+fabricate,/ˈfæbrɪkeɪt/     
+supplementary,/ˌsʌplɪˈmentri/     
+disenchantment,/ˌdɪsɪnˈtʃæntmənt/     
+subside,/səbˈsaɪd/     
+refrain,/rɪˈfreɪn/     
+solidarity,/ˌsɑːlɪˈdærəti/     
+pledge,/pledʒ/     
+exotic,/ɪɡˈzɑːtɪk/     
+saliva,/səˈlaɪvə/     
+legacy,/ˈleɡəsi/     
+affiliated,/əˈfɪlieɪtɪd/     
+jurisdiction,/ˌdʒʊrɪsˈdɪkʃn/     
+legitimate,/lɪˈdʒɪtɪmət/     
+reckon,/ˈrekən/     
+outcrop,/ˈaʊtkrɑːp/     
+sovereignty,/ˈsɑːvrənti/     
+agenda,/əˈdʒendə/     
+contiguous,/kənˈtɪɡjuəs/     
+plague,/pleɪɡ/     
+ignite,/ɪɡˈnaɪt/     
+welfare,/ˈwelfer/     
+advocate,/ˈædvəkeɪt/     
+companion,/kəmˈpæniən/     
+commentary,/ˈkɑːmənteri/     
+resolution,/ˌrezəˈluːʃn/     
+condemn,/kənˈdem/     
+align,/əˈlaɪn/     

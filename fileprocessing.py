@@ -80,6 +80,6 @@ def search_for_meaning(file_name):
 
 if __name__ == '__main__':
     # search_for_voice('newwords')
-    search_for_voice('Academic')
-    # file_formatting('newwords')
+    # search_for_voice('Academic')
+    file_formatting('newwords')
     # file_formatting('Academic')
