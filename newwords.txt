@@ -140,3 +140,5 @@ wield
 dispute      
 vapor     
 farewell     
+exotic     
+lure      
