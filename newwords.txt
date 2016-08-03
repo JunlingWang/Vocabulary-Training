@@ -142,3 +142,9 @@ vapor
 farewell     
 exotic     
 lure      
+eligible     
+competent    
+arrogant     
+elaborate     
+terror      
+cache     

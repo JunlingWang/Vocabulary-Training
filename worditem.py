@@ -127,7 +127,7 @@ def get_word_item(word_str):
         wi.meaning = attributes_list[2]
     if len(attributes_list) >= 4 and len(attributes_list[3]) > 0:
         wi.history = attributes_list[3]
-    #  print(word_str+'\n')  # for trouble shooting
+    # print(word_str+'\n')  # for trouble shooting
     wi.score = get_score(wi.history)
     if len(attributes_list) >= 6 and len(attributes_list[5]) > 0:
         wi.weight = int(attributes_list[5])
