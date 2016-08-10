@@ -233,10 +233,16 @@ def main(file_name):
                         word_to_practice.add_result(result)
                         add_word_item(sorted_word_list, word_to_practice)
                 if do_continue == 'm' or word_input == 'M':
-                    word_to_practice.meaning = input('Input the meaning')
-                    add_word_item(sorted_word_list, word_to_practice)
-                    print(word_to_practice.meaning)
-                    do_continue = input('Meaning has been saved. Any Key continue, X quit R repeat M meaning I mark as important\n')
+                    meaning_input = input('Input the meaning')
+                    if ',' in meaning_input or '/' in meaning_input:
+                        print('No comma or slash in the meaning')
+                        do_continue = input('Any Key continue, X quit R repeat M meaning I mark as important\n')
+
+                    else:
+                        word_to_practice.meaning = meaning_input
+                        add_word_item(sorted_word_list, word_to_practice)
+                        print(word_to_practice.meaning)
+                        do_continue = input('Meaning has been saved. Any Key continue, X quit R repeat M meaning I mark as important\n')
                     # add the meaning of the item
                 # if do_continue == 'c'or do_continue == 'C':
                 #     open_web_page(word_to_practice.word)
