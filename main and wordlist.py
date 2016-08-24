@@ -234,8 +234,8 @@ def main(file_name):
                         add_word_item(sorted_word_list, word_to_practice)
                 if do_continue == 'm' or word_input == 'M':
                     meaning_input = input('Input the meaning')
-                    if ',' in meaning_input or '/' in meaning_input:
-                        print('No comma or slash in the meaning')
+                    if ',' in meaning_input:
+                        print('No comma in the meaning')
                         do_continue = input('Any Key continue, X quit R repeat M meaning I mark as important\n')
 
                     else:
