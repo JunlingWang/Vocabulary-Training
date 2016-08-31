@@ -1,7 +1,7 @@
 __author__ = 'junlingwang'
 
 from datetime import datetime
-MAXIMUM_ROUNDS = 10
+MAXIMUM_ROUNDS = 5
 NEVER_WRONG_ROUNDS =5
 
 
