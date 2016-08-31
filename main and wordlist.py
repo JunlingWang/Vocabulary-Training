@@ -147,6 +147,7 @@ def main(file_name):
     previous_exercise_count = get_daily_record(date_str, 'record')
     exercise_count = 0  # To count how many words are exercised.
     words_practiced_today = []
+    prompt_word = 'Any Key: continue, X: quit, R: repeat, M: meaning, I: important, G: already good\n'
     while True:
         word_to_practice = None  # in case the same word appears repeatedly
         if len(list_fault) > fault_count:
@@ -187,7 +188,8 @@ def main(file_name):
 
             if word_input == word_to_practice.word:
                 result = 't'
-                do_continue = input('Correct! Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
+                print('Correct!')
+                do_continue = input(prompt_word)
             elif word_input == 'x' or word_input == 'X':
                 print(write_daily_record(date_str, exercise_count, 'record')+"words have been exercised today.")
                 break
@@ -195,10 +197,11 @@ def main(file_name):
             # but considered as that he wants to quit
             else:
                 result = 'f'
-                do_continue = input('Wrong! It should be:\n'+word_to_practice.word + '\n Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
+                print('Wrong! It should be:\n'+word_to_practice.word)
+                do_continue = input(prompt_word)
             word_to_practice.add_result(result)
             add_word_item(sorted_word_list, word_to_practice)
-            while len(do_continue) > 1 or do_continue == 'r' or do_continue == 'm' or do_continue == 'i':
+            while True: #len(do_continue) > 1 or do_continue == 'r' or do_continue == 'm' or do_continue == 'i':
                 if len(do_continue) > 1:
                     match_count = 0
                     for item in sorted_word_list:
@@ -210,57 +213,62 @@ def main(file_name):
                             word_input = input('input word \n')
                             if word_input == word_to_practice.word:
                                 result = 't'
-                                do_continue = input('Correct! Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
+                                print('Correct!')
+                                do_continue = input(prompt_word)
                             elif word_input == 'x' or word_input == 'X':
                                 do_continue = word_input
                             # if user types 'x' during practice it's not considered as wrong
                             # but considered as that he wants to quit
                             else:
                                 result = 'f'
-                                do_continue = input('Wrong! It should be:\n'+word_to_practice.word + '\n Y continue, X quit R repeat I mark as important g already good\n')
+                                print('Wrong! It should be:\n'+word_to_practice.word)
+                                do_continue = input(prompt_word)
                                 word_to_practice.add_result(result)
                                 add_word_item(sorted_word_list, word_to_practice)
                             break
                     if match_count == 0:
                         break
-                if do_continue == 'r':
+                elif do_continue == 'r':
                     print(word_to_practice.voice)
                     print(word_to_practice.meaning)
                     word_input = input('input word \n')
                     if word_input == word_to_practice.word:
-                        do_continue = input('Correct! Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
+                        print('Correct!')
+                        do_continue = input(prompt_word)
                     else:
                         result = 'f'
-                        do_continue = input('Wrong! It should be:\n'+word_to_practice.word + '\n Y continue, X quit R repeat I mark as important g already good\n')
+                        print('Wrong! It should be:\n'+word_to_practice.word)
+                        do_continue = input(prompt_word)
                         word_to_practice.add_result(result)
                         add_word_item(sorted_word_list, word_to_practice)
-                if do_continue == 'm' or word_input == 'M':
+                elif do_continue == 'm' or word_input == 'M':
                     meaning_input = input('Input the meaning')
                     if ',' in meaning_input:
                         print('No comma in the meaning')
-                        do_continue = input('Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
-
+                        do_continue = input(prompt_word)
                     else:
                         word_to_practice.meaning = meaning_input
                         add_word_item(sorted_word_list, word_to_practice)
                         print(word_to_practice.meaning)
-                        do_continue = input('Meaning has been saved. Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
+                        print('Meaning has been saved.')
+                        do_continue = input(prompt_word)
                     # add the meaning of the item
                 # if do_continue == 'c'or do_continue == 'C':
                 #     open_web_page(word_to_practice.word)
                 #     do_continue = input('Any Key continue, X quit R repeat M meaning I mark as important\n')
-                if do_continue == 'i' or do_continue == 'I':
+                elif do_continue == 'i' or do_continue == 'I':
                     if word_to_practice.weight == 0:
                         word_to_practice.weight = 1
                     add_word_item(sorted_word_list, word_to_practice)
                     print('Current importance index is', word_to_practice.weight)
-                    do_continue = input('Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
-                if do_continue == 'g' or do_continue == 'G':
-                    print("good!")
+                    do_continue = input(prompt_word)
+                elif do_continue == 'g' or do_continue == 'G':
                     word_to_practice.weight = 10000
                     add_word_item(sorted_word_list, word_to_practice)
-                    print('Current importance index is', word_to_practice.weight)
-                    do_continue = input('Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
+                    print('Current importance index is', word_to_practice.weight,',which means it\'s already good.')
+                    do_continue = input(prompt_word)
+                else:
+                    break
             if do_continue == 'x' or do_continue == 'X':
                 print(write_daily_record(date_str, exercise_count, 'record')+"words have been exercised today.")
                 break
