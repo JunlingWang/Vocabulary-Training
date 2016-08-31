@@ -18,7 +18,7 @@ def read_file(file_name):  # returns a list sorted by score
     word_list = []
     for line in lines:  # line is a string in lines
         word_item_of_line = get_word_item(line.strip())
-        if word_item_of_line.weight != -1: # if weight is -1, this item doesn't need to be practiced
+        if word_item_of_line.weight != 10000: # if weight is 10000, this item doesn't need to be practiced
             word_list.append(word_item_of_line)  # strip(), delete blank characters including '\n'
     sorted_list = sorted(word_list, key=lambda item: item.score, reverse=True)  # word_list is not changed
     #  lambda function. Before the colon is parameter, after the colon is the result.
@@ -256,7 +256,8 @@ def main(file_name):
                     print('Current importance index is', word_to_practice.weight)
                     do_continue = input('Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
                 if do_continue == 'g' or do_continue == 'G':
-                    word_to_practice.weight = -1
+                    print("good!")
+                    word_to_practice.weight = 10000
                     add_word_item(sorted_word_list, word_to_practice)
                     print('Current importance index is', word_to_practice.weight)
                     do_continue = input('Any Key continue, X quit R repeat M meaning I mark as important g already good\n')
