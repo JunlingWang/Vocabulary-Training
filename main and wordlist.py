@@ -7,23 +7,28 @@ from worditem import WordItem
 import random
 from datetime import datetime
 
-
 # def open_web_page(word_str):
 #     webbrowser.open_new_tab("http://www.oxfordlearnersdictionaries.com/definition/english/" + word_str + "_1")
 
 
-def read_file(file_name):  # returns a list sorted by score
+def read_file(file_name, what_to_get="sorted_list"):  # returns a list sorted by score
     with open('/home/junlingwang/Desktop/Vocabulary training/'+file_name+'.txt', 'r') as word_file:
         lines = word_file.readlines()  # lines is a list of strings
     word_list = []
+    good_word_list = []
     for line in lines:  # line is a string in lines
         word_item_of_line = get_word_item(line.strip())
-        if word_item_of_line.weight != 10000: # if weight is 10000, this item doesn't need to be practiced
+        if word_item_of_line.weight != 10000: # if weight is 10000, it means this item doesn't need to be practiced any more.
             word_list.append(word_item_of_line)  # strip(), delete blank characters including '\n'
+        else:
+            good_word_list.append(word_item_of_line)
     sorted_list = sorted(word_list, key=lambda item: item.score, reverse=True)  # word_list is not changed
     #  lambda function. Before the colon is parameter, after the colon is the result.
     # this lambda function is to sort the word list's item by their scores
-    return sorted_list
+    if what_to_get == "good_word_list":
+        return good_word_list
+    else:
+        return sorted_list
 
 
 def write_file(word_list, file_name):
@@ -133,13 +138,16 @@ def write_daily_record(date_str='', practice_count=0, file_name=''):
 
 
 def main(file_name):
-    sorted_word_list = read_file(file_name)  # read_file has the function of sorting items by scores
+    sorted_word_list = read_file(file_name, "sorted_list")  # read_file has the function of sorting items by scores
+    old_good_word_list = read_file(file_name, "good_word_list")
+    number_of_old_good_words = len(old_good_word_list)
     list_not_exercised, list_all_correct, list_fault = divide_list(sorted_word_list)
     # divide_list() is a function defined previously
-    print((len(sorted_word_list) - len(list_not_exercised)),'words has been practiced previously.')  # show how many words have been practised
+    print((len(sorted_word_list) + number_of_old_good_words - len(list_not_exercised)),'words has been practiced previously.')  # show how many words have been practised
     not_exercised_count = 0
     all_correct_count = 0
     fault_count = 0
+    number_of_new_good_words = 0
     word_to_practice = None
     i = 0  # prevents infinite loop
     date_now = datetime.now()
@@ -147,7 +155,7 @@ def main(file_name):
     previous_exercise_count = get_daily_record(date_str, 'record')
     exercise_count = 0  # To count how many words are exercised.
     words_practiced_today = []
-    prompt_word = 'Any Key: continue, X: quit, R: repeat, M: meaning, I: important, G: already good\n'
+    prompt_word = 'Any Key: continue, X: quit, R: repeat, M: meaning, I: important, G: no need for further practice\n'
     while True:
         word_to_practice = None  # in case the same word appears repeatedly
         if len(list_fault) > fault_count:
@@ -263,7 +271,8 @@ def main(file_name):
                     print('Current importance index is', word_to_practice.weight)
                     do_continue = input(prompt_word)
                 elif do_continue == 'g' or do_continue == 'G':
-                    word_to_practice.weight = 10000
+                    word_to_practice.weight = 10000  # if weight is 10000, it means this item doesn't need to be practiced any more.
+                    number_of_new_good_words +=1
                     add_word_item(sorted_word_list, word_to_practice)
                     print('Current importance index is', word_to_practice.weight,',which means it\'s already good.')
                     do_continue = input(prompt_word)
@@ -272,13 +281,14 @@ def main(file_name):
             if do_continue == 'x' or do_continue == 'X':
                 print(write_daily_record(date_str, exercise_count, 'record')+"words have been exercised today.")
                 break
-
-    write_file(sorted_word_list, file_name)
+    number_of_good_words = number_of_old_good_words + number_of_new_good_words
+    word_list_to_write = sorted_word_list + old_good_word_list
+    write_file(word_list_to_write, file_name)
     sorted_word_list = read_file(file_name)  # read_file has the function of sorting items by scores
     list_not_exercised, list_all_correct, list_fault = divide_list(sorted_word_list)
     # divide_list() is a function defined previously
-    print((len(sorted_word_list) - len(list_not_exercised)),'words totally.')  # show how many words have been practised
-
+    print((len(sorted_word_list) + number_of_good_words - len(list_not_exercised)),'words totally.')  # show how many words have been practised
+    print(number_of_good_words,"good words.")
 #######################
 # test below
 
