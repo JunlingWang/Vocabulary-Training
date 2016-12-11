@@ -12,11 +12,16 @@ from datetime import datetime
 
 
 def read_file(file_name, what_to_get="sorted_list"):  # returns a list sorted by score
+    times_of_wrong = 0
+    if what_to_get.isdigit():
+        times_of_wrong = int(what_to_get)
+
     with open('/home/junlingwang/Desktop/Vocabulary training/'+file_name+'.txt', 'r') as word_file:
         lines = word_file.readlines()  # lines is a list of strings
     word_list = []
     good_word_list = []
     never_practiced_list = []
+    wrong_certain_times_list = []
     for line in lines:  # line is a string in lines
         word_item_of_line = get_word_item(line.strip())
         if word_item_of_line.weight != 10000: # if weight is 10000, it means this item doesn't need to be practiced any more.
@@ -25,6 +30,8 @@ def read_file(file_name, what_to_get="sorted_list"):  # returns a list sorted by
             never_practiced_list.append(word_item_of_line)  # -2 is the score code of "never practiced".
         if word_item_of_line.weight == 10000:
             good_word_list.append(word_item_of_line)
+        if word_item_of_line.weight >= times_of_wrong and word_item_of_line.weight != 10000:
+            wrong_certain_times_list.append(word_item_of_line)
     sorted_list = sorted(word_list, key=lambda item: item.score, reverse=True)  # word_list is not changed
     #  lambda function. Before the colon is parameter, after the colon is the result.
     # this lambda function is to sort the word list's item by their scores
@@ -32,6 +39,8 @@ def read_file(file_name, what_to_get="sorted_list"):  # returns a list sorted by
         return good_word_list
     elif what_to_get == "never_practiced":
         return never_practiced_list # currently not in use.
+    elif times_of_wrong > 0:
+        return wrong_certain_times_list
     else:
         return sorted_list
 
@@ -88,7 +97,10 @@ def divide_list(word_list):
 
 def get_date_difference(word_item_to_get_date_difference):
     date_today = datetime.now()  # this is a datetime object, not str
-    history_str = word_item_to_get_date_difference.history
+    if word_item_to_get_date_difference is not None:
+        history_str = word_item_to_get_date_difference.history
+    else:
+        history_str = "0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n;0001-01-01n,-2,10000"
     practice_list = history_str.split(';')
     last_practice_date_str = practice_list[0][0: -1]
     last_practice_year_int = int(last_practice_date_str[0: 4])
@@ -142,13 +154,19 @@ def write_daily_record(date_str='', practice_count=0, file_name=''):
 # main below
 
 
-def main(file_name, operation_code=""):
+def main(file_name, operation_code="sorted_list"):
     sorted_word_list = read_file(file_name, "sorted_list")  # read_file has the function of sorting items by scores
     old_good_word_list = read_file(file_name, "good_word_list")
-    never_practiced_list = read_file(file_name,"never_practiced")
     number_of_old_good_words = len(old_good_word_list)
     if operation_code == "never_practiced":
+        never_practiced_list = read_file(file_name,operation_code)
         list_not_exercised, list_all_correct, list_fault = divide_list(never_practiced_list)
+    elif operation_code.isdigit():
+        wrong_certain_times_list = read_file(file_name,operation_code)
+        list_not_exercised, list_all_correct, list_fault = divide_list(wrong_certain_times_list)
+        for word_item in wrong_certain_times_list:
+            print(word_item.word)
+        print(len(wrong_certain_times_list),"words that wrong",operation_code,"times or more.")
     else:
         list_not_exercised, list_all_correct, list_fault = divide_list(sorted_word_list)
     # divide_list() is a function defined previously
@@ -336,5 +354,7 @@ def test_read_file():
 
 
 if __name__ == '__main__':
-    main('oxford3000+',"never_practiced")
+    # main('oxford3000+',"never_practiced")
+    # main('oxford3000+',"sorted_list")
+    main('oxford3000+',"4")
     # main('newwords')
