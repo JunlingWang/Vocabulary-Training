@@ -16,17 +16,22 @@ def read_file(file_name, what_to_get="sorted_list"):  # returns a list sorted by
         lines = word_file.readlines()  # lines is a list of strings
     word_list = []
     good_word_list = []
+    never_practiced_list = []
     for line in lines:  # line is a string in lines
         word_item_of_line = get_word_item(line.strip())
         if word_item_of_line.weight != 10000: # if weight is 10000, it means this item doesn't need to be practiced any more.
             word_list.append(word_item_of_line)  # strip(), delete blank characters including '\n'
-        else:
+        if word_item_of_line.score == -2:
+            never_practiced_list.append(word_item_of_line)  # -2 is the score code of "never practiced".
+        if word_item_of_line.weight == 10000:
             good_word_list.append(word_item_of_line)
     sorted_list = sorted(word_list, key=lambda item: item.score, reverse=True)  # word_list is not changed
     #  lambda function. Before the colon is parameter, after the colon is the result.
     # this lambda function is to sort the word list's item by their scores
     if what_to_get == "good_word_list":
         return good_word_list
+    elif what_to_get == "never_practiced":
+        return never_practiced_list # currently not in use.
     else:
         return sorted_list
 
@@ -137,12 +142,17 @@ def write_daily_record(date_str='', practice_count=0, file_name=''):
 # main below
 
 
-def main(file_name):
+def main(file_name, operation_code=""):
     sorted_word_list = read_file(file_name, "sorted_list")  # read_file has the function of sorting items by scores
     old_good_word_list = read_file(file_name, "good_word_list")
+    never_practiced_list = read_file(file_name,"never_practiced")
     number_of_old_good_words = len(old_good_word_list)
-    list_not_exercised, list_all_correct, list_fault = divide_list(sorted_word_list)
+    if operation_code == "never_practiced":
+        list_not_exercised, list_all_correct, list_fault = divide_list(never_practiced_list)
+    else:
+        list_not_exercised, list_all_correct, list_fault = divide_list(sorted_word_list)
     # divide_list() is a function defined previously
+    print((len(sorted_word_list) + number_of_old_good_words),'totally.')  # show overall number of words.
     print((len(sorted_word_list) + number_of_old_good_words - len(list_not_exercised)),'words has been practiced previously.')  # show how many words have been practised
     not_exercised_count = 0
     all_correct_count = 0
@@ -166,7 +176,10 @@ def main(file_name):
             word_to_practice = list_fault[fault_count]
             fault_count += 1
         else:
-            choose_not_exercised = random_machine(10)
+            if operation_code == "never_practiced":
+                choose_not_exercised = True
+            else:
+                choose_not_exercised = random_machine(10)
             # the ratio of all correct to not exercised is 1 to 11
             if choose_not_exercised and len(list_not_exercised) > not_exercised_count:
                 word_to_practice = list_not_exercised[not_exercised_count]
@@ -287,7 +300,7 @@ def main(file_name):
     sorted_word_list = read_file(file_name)  # read_file has the function of sorting items by scores
     list_not_exercised, list_all_correct, list_fault = divide_list(sorted_word_list)
     # divide_list() is a function defined previously
-    print((len(sorted_word_list) + number_of_good_words - len(list_not_exercised)),'words totally.')  # show how many words have been practised
+    print((len(sorted_word_list) + number_of_good_words - len(list_not_exercised)),'words practiced totally.')  # show how many words have been practised
     print(number_of_good_words,"good words.")
 #######################
 # test below
@@ -323,5 +336,5 @@ def test_read_file():
 
 
 if __name__ == '__main__':
-    main('oxford3000+')
+    main('oxford3000+',"never_practiced")
     # main('newwords')

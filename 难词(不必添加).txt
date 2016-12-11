@@ -31,7 +31,13 @@ library
 member
 tongue
 mental
-scientist
+scientist   
+military      
+equivalent     
+potential     
+behavior    
+resource    
+occur   
 science
 prior
 exhibit
@@ -43,6 +49,7 @@ obsolete
 scenery
 wooden
 institute
+damage    
 previous
 argument
 calculate
@@ -155,3 +162,9 @@ schedule
 manage     
 manager    
 tomorrow    
+whose   
+contemporary   
+circumstance     
+series   
+frequently     
+
