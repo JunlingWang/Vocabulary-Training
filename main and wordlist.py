@@ -9,6 +9,7 @@ from datetime import datetime
 
 # def open_web_page(word_str):
 #     webbrowser.open_new_tab("http://www.oxfordlearnersdictionaries.com/definition/english/" + word_str + "_1")
+# This file is for practising word spelling
 
 
 def read_file(file_name, what_to_get="sorted_list"):  # returns a list sorted by score
